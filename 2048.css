@@ -2,7 +2,7 @@
   position: absolute;
   background-color: green;
   border: 13px solid #006400;
-  border-radius: 3px;
+  border-radius: 6px;
   z-index: 1; }
 
 .grid-row {
