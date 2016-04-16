@@ -338,8 +338,6 @@ fillholes = function(direction){
   }
 }
 
-
-
 sumNum= function(direction){
     //Casos:
     //Primero igual segundo -> y/o tercero igual cuarto
@@ -348,10 +346,10 @@ sumNum= function(direction){
     switch (direction) {
       case "right":
         if ($("#4").text() == $("#3").text()){
-          $("#4").text(parseInt($("#4").text()+parseInt($("#3").text()));
+          $("#4").text(parseInt($("#4").text())+parseInt($("#3").text()));
           $("#3").text("");
           if ($("#2").text() == $("#1").text()) {
-            $("#2").text() = parseInt($("#2").text()+parseInt($("#1").text()));
+            $("#2").text(parseInt($("#2").text())+parseInt($("#1").text()));
             $("#1").text("");
           }
         }else if ($("#3").text() == $("#2").text()) {
@@ -609,24 +607,32 @@ $(document).ready(function(){
           fillholes("left");
           cellname = getemptycell();
           $(cellname).text(newnumber());
+          sumNum("left");
+          fillholes("left");
           break;
         case 38: // up
           console.log("Arriba");
           fillholes("top");
           cellname = getemptycell();
           $(cellname).text(newnumber());
+          sumNum("top");
+          fillholes("top");
           break;
         case 39: // right
           console.log("Derecha");
           fillholes("right");
           cellname = getemptycell();
           $(cellname).text(newnumber());
+          sumNum("right");
+          fillholes("right");
           break;
         case 40: // down
           console.log("Abajo");
           fillholes("bot");
           cellname = getemptycell();
           $(cellname).text(newnumber());
+          sumNum("bot");
+          fillholes("bot");
           break;
         default: return; // exit this handler for other keys
     }
