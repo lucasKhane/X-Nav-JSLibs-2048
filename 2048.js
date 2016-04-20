@@ -256,9 +256,7 @@ fillholes = function(direction){
             }
             break;
         case "bot":
-            console.log("Entra en bot");
             if (($("#16").text() != "")||($("#12").text() != "")||($("#8").text() != "")||($("#4").text() != "")){
-              console.log("Primera");
               if ($("#16").text() == ""){
                 $("#16").text($("#12").text());
                 $("#12").text($("#8").text());
@@ -277,7 +275,6 @@ fillholes = function(direction){
               //Y si el de arriba del todo esta vacio no pasa nada
             }
             if (($("#15").text() != "")||($("#11").text() != "")||($("#7").text() != "")||($("#3").text() != "")){
-              console.log("Segunda");
               if ($("#15").text() == ""){
                 $("#15").text($("#11").text());
                 $("#11").text($("#7").text());
@@ -296,7 +293,6 @@ fillholes = function(direction){
               //Y si el de arriba del todo esta vacio no pasa nada
             }
             if (($("#14").text() != "")||($("#10").text() != "")||($("#6").text() != "")||($("#2").text() != "")){
-              console.log("Tercera");
               if ($("#14").text() == ""){
                 $("#14").text($("#10").text());
                 $("#10").text($("#6").text());
@@ -315,7 +311,6 @@ fillholes = function(direction){
               //Y si el de arriba del todo esta vacio no pasa nada
             }
             if (($("#13").text() != "")||($("#9").text() != "")||($("#5").text() != "")||($("#1").text() != "")){
-              console.log("Cuarta");
               if ($("#13").text() == ""){
                 $("#13").text($("#9").text());
                 $("#9").text($("#5").text());
@@ -596,48 +591,159 @@ sumNum= function(direction){
     }
 }
 
+animate = function(){
+  for (var i=1; i<17; i++){
+    var tag = "#"+i;
+    var num = parseInt($(tag).text());
+    switch (num) {
+      case 2:
+        $(tag).animate({
+          color: "Navy",
+        });
+        break;
+      case 4:
+        $(tag).animate({
+          color: "Orange",
+        });
+        break;
+      case 8:
+        $(tag).animate({
+          color: "DarkSlateGray",
+        });
+        break;
+      case 16:
+        $(tag).animate({
+          color: "DodgerBlue",
+        });
+        break;
+      case 32:
+        $(tag).animate({
+          color: "Indigo",
+        });
+        break;
+      case 64:
+        $(tag).animate({
+          color: "LawnGreen",
+          backgroundColor: "Indigo"
+        });
+        break;
+      case 128:
+        $(tag).animate({
+          color: "LightGreen",
+          backgroundColor: "LawnGreen"
+        });
+        break;
+      case 256:
+        $(tag).animate({
+          color: "Maroon",
+          backgroundColor: "LightGreen"
+        });
+        break;
+      case 512:
+        $(tag).animate({
+          color: "Red",
+          backgroundColor: "Maroon"
+        });
+        break;
+      case 1024:
+        $(tag).animate({
+          color: "Salmon",
+          backgroundColor: "Red"
+        });
+        break;
+      case 2048:
+        $(tag).animate({
+          color: "Silver",
+          backgroundColor: "Salmon"
+        });
+        break;
+      case 4096:
+        $(tag).animate({
+          color: "Gold",
+          backgroundColor: "Silver"
+        });
+        break;
+
+      /**
+      //Irreal para la funcion de este ejercicio
+      case 8192:
+      $(tag).animate({
+        color: "",
+        backgroundColor: "rgb(,,)"
+      });
+        break;
+      case 16384:
+      $(tag).animate({
+        color: "",
+        backgroundColor: "rgb(,,)"
+      });
+        break;
+      case 32768:
+      $(tag).animate({
+        color: "",
+        backgroundColor: "rgb(,,)"
+      });
+        break;
+      case 65536:
+      $(tag).animate({
+        color: "",
+        backgroundColor: "rgb(,,)"
+      });
+        break;**/
+      default:
+        //Se trata del caso que al parsear el "" tenemos el NaN
+        //La dejamos como al principio!!!!!!!!!!!
+        $(tag).animate({
+          color: "black"
+        });
+    }
+  }
+}
+
 $(document).ready(function(){
   var cellname = getemptycell();
   $(cellname).text(newnumber());
   cellname = getemptycell();
   $(cellname).text(newnumber());
+  animate();
   //Keyboard
   $(document).keydown(function(e) {
     switch(e.which) {
         case 37: // left
           console.log("Izquierda");
           fillholes("left");
-          cellname = getemptycell();
-          $(cellname).text(newnumber());
           sumNum("left");
           fillholes("left");
+          cellname = getemptycell();
+          $(cellname).text(newnumber());
           break;
         case 38: // up
           console.log("Arriba");
           fillholes("top");
-          cellname = getemptycell();
-          $(cellname).text(newnumber());
           sumNum("top");
           fillholes("top");
+          cellname = getemptycell();
+          $(cellname).text(newnumber());
           break;
         case 39: // right
           console.log("Derecha");
           fillholes("right");
-          cellname = getemptycell();
-          $(cellname).text(newnumber());
           sumNum("right");
           fillholes("right");
+          cellname = getemptycell();
+          $(cellname).text(newnumber());
           break;
         case 40: // down
           console.log("Abajo");
           fillholes("bot");
-          cellname = getemptycell();
-          $(cellname).text(newnumber());
           sumNum("bot");
           fillholes("bot");
+          cellname = getemptycell();
+          $(cellname).text(newnumber());
           break;
         default: return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
+    animate();
   });
 });
