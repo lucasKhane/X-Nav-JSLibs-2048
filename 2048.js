@@ -276,7 +276,6 @@ fillholes = function(direction){
               }
               //Y si el de arriba del todo esta vacio no pasa nada
             }
-            break;
             if (($("#15").text() != "")||($("#11").text() != "")||($("#7").text() != "")||($("#3").text() != "")){
               console.log("Segunda");
               if ($("#15").text() == ""){
@@ -296,7 +295,6 @@ fillholes = function(direction){
               }
               //Y si el de arriba del todo esta vacio no pasa nada
             }
-            break;
             if (($("#14").text() != "")||($("#10").text() != "")||($("#6").text() != "")||($("#2").text() != "")){
               console.log("Tercera");
               if ($("#14").text() == ""){
@@ -316,8 +314,8 @@ fillholes = function(direction){
               }
               //Y si el de arriba del todo esta vacio no pasa nada
             }
-            break;
             if (($("#13").text() != "")||($("#9").text() != "")||($("#5").text() != "")||($("#1").text() != "")){
+              console.log("Cuarta");
               if ($("#13").text() == ""){
                 $("#13").text($("#9").text());
                 $("#9").text($("#5").text());
@@ -441,7 +439,7 @@ sumNum= function(direction){
             $("#8").text("");
           }
 
-          if (($("#9").text() == $("10").text()) && ($("#9").text() != "")){
+          if (($("#9").text() == $("#10").text()) && ($("#9").text() != "")){
             $("#9").text(parseInt($("#9").text())+parseInt($("#10").text()));
             $("#10").text("");
             if (($("#11").text() == $("#12").text()) && ($("#11").text() != "")){
@@ -502,7 +500,7 @@ sumNum= function(direction){
             $("#15").text("");
           }
 
-          if (($("#2").text() == $("6").text()) && ($("#2").text() != "")){
+          if (($("#2").text() == $("#6").text()) && ($("#2").text() != "")){
             $("#2").text(parseInt($("#2").text())+parseInt($("#6").text()));
             $("#6").text("");
             if (($("#10").text() == $("#14").text()) && ($("#10").text() != "")){
@@ -563,7 +561,7 @@ sumNum= function(direction){
             $("#3").text("");
           }
 
-          if (($("#14").text() == $("10").text()) && ($("#14").text() != "")){
+          if (($("#14").text() == $("#10").text()) && ($("#14").text() != "")){
             $("#14").text(parseInt($("#14").text())+parseInt($("#10").text()));
             $("#10").text("");
             if (($("#6").text() == $("#2").text()) && ($("#6").text() != "")){
